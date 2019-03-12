@@ -26,12 +26,12 @@ public class ItemList {
         items = new ArrayList<Item>();
     }
 
-    public void setItems(ArrayList<Item> item_list) {
-        items = item_list;
-    }
-
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public void setItems(ArrayList<Item> item_list) {
+        items = item_list;
     }
 
     public void addItem(Item item) {
@@ -52,7 +52,7 @@ public class ItemList {
             if (item.getId().equals(i.getId())) {
                 return pos;
             }
-            pos = pos+1;
+            pos = pos + 1;
         }
         return -1;
     }
@@ -67,7 +67,8 @@ public class ItemList {
             FileInputStream fis = context.openFileInput(FILENAME);
             InputStreamReader isr = new InputStreamReader(fis);
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Item>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Item>>() {
+            }.getType();
             items = gson.fromJson(isr, listType); // temporary
             fis.close();
         } catch (FileNotFoundException e) {
@@ -92,9 +93,9 @@ public class ItemList {
         }
     }
 
-    public ArrayList<Item> filterItemsByStatus(String status){
+    public ArrayList<Item> filterItemsByStatus(String status) {
         ArrayList<Item> selected_items = new ArrayList<>();
-        for (Item i: items) {
+        for (Item i : items) {
             if (i.getStatus().equals(status)) {
                 selected_items.add(i);
             }

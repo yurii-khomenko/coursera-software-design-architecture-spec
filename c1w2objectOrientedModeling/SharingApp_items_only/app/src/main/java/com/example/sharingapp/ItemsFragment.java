@@ -38,13 +38,13 @@ public abstract class ItemsFragment extends Fragment {
         return rootView;
     }
 
-    public void setVariables(int resource, int id ) {
+    public void setVariables(int resource, int id) {
         rootView = inflater.inflate(resource, container, false);
         list_view = (ListView) rootView.findViewById(id);
         selected_items = filterItems();
     }
 
-    public void setAdapter(Fragment fragment){
+    public void setAdapter(Fragment fragment) {
         adapter = new ItemAdapter(context, selected_items, fragment);
         list_view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -71,6 +71,7 @@ public abstract class ItemsFragment extends Fragment {
 
     /**
      * filterItems is implemented independently by AvailableItemsFragment, BorrowedItemsFragment and AllItemsFragment
+     *
      * @return selected_items
      */
     public abstract ArrayList<Item> filterItems();

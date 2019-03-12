@@ -12,14 +12,14 @@ import java.util.UUID;
  */
 public class Item {
 
+    protected transient Bitmap image;
+    protected String image_base64;
     private String title;
     private String maker;
     private String description;
     private Dimensions dimensions;
     private String status;
     private String borrower;
-    protected transient Bitmap image;
-    protected String image_base64;
     private String id;
 
     public Item(String title, String maker, String description, Dimensions dimensions, Bitmap image, String id) {
@@ -31,14 +31,14 @@ public class Item {
         this.borrower = "";
         addImage(image);
 
-        if (id == null){
+        if (id == null) {
             setId();
         } else {
             updateId(id);
         }
     }
 
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 
@@ -46,59 +46,59 @@ public class Item {
         this.id = UUID.randomUUID().toString();
     }
 
-    public void updateId(String id){
+    public void updateId(String id) {
         this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setMaker(String maker) {
-        this.maker = maker;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMaker() {
         return maker;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMaker(String maker) {
+        this.maker = maker;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Dimensions getDimensions() {
         return dimensions;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDimensions(Dimensions dimensions) {
+        this.dimensions = dimensions;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setBorrower(String borrower) {
-        this.borrower = borrower;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getBorrower() {
         return borrower;
     }
 
-    public void addImage(Bitmap new_image){
+    public void setBorrower(String borrower) {
+        this.borrower = borrower;
+    }
+
+    public void addImage(Bitmap new_image) {
         if (new_image != null) {
             image = new_image;
             ByteArrayOutputStream byteArrayBitmapStream = new ByteArrayOutputStream();
@@ -108,7 +108,7 @@ public class Item {
         }
     }
 
-    public Bitmap getImage(){
+    public Bitmap getImage() {
         if (image == null && image_base64 != null) {
             byte[] decodeString = Base64.decode(image_base64, Base64.DEFAULT);
             image = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);

@@ -3,9 +3,9 @@ package com.example.sharingapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,7 +33,7 @@ public class EditItemActivity extends AppCompatActivity {
     private EditText width;
     private EditText height;
     private EditText borrower;
-    private TextView  borrower_tv;
+    private TextView borrower_tv;
     private Switch status;
 
     @Override
@@ -100,8 +100,8 @@ public class EditItemActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int request_code, int result_code, Intent intent){
-        if (request_code == REQUEST_CODE && result_code == RESULT_OK){
+    protected void onActivityResult(int request_code, int result_code, Intent intent) {
+        if (request_code == REQUEST_CODE && result_code == RESULT_OK) {
             Bundle extras = intent.getExtras();
             image = (Bitmap) extras.get("data");
             photo.setImageBitmap(image);
@@ -188,7 +188,7 @@ public class EditItemActivity extends AppCompatActivity {
      * Checked = Available
      * Unchecked = Borrowed
      */
-    public void toggleSwitch(View view){
+    public void toggleSwitch(View view) {
         if (status.isChecked()) {
             // Means was previously borrowed
             borrower.setVisibility(View.GONE);
